@@ -46,9 +46,35 @@ const EditableHoursCell = ({ value, isEditing }) => {
     )
 }
 
+const InvoiceTableHeader = () => {
+    return (
+        <tr>
+            <th></th>
+            <th>Description</th>
+            <th>Rate</th>
+            <th>Hours</th>
+            <th>Amount</th>
+        </tr>
+    )
+}
+
+const InvoiceTableAddButton = () => {
+    return (
+        <tr>
+            <td></td>
+            <td colSpan='4'>
+                <button>Add</button>
+            </td>
+        </tr>
+    )
+}
+
 const InvoiceTable = () => {
     return (
         <table>
+            <thead>
+                <InvoiceTableHeader/>
+            </thead>
             <tbody>
                 <tr>
                     <EditableRowModeButtons isEditing={false}/>
@@ -63,6 +89,9 @@ const InvoiceTable = () => {
                     <EditableHoursCell value={8} isEditing={true}/>
                 </tr>
             </tbody>
+            <tfoot>
+                <InvoiceTableAddButton/>
+            </tfoot>
         </table>
     )
 }
