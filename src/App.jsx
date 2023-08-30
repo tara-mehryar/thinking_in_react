@@ -9,7 +9,7 @@ const TEST_DATA = [
 ];
 
 function App() {
-  return <InvoiceTable/>;
+  return <InvoiceTable initialInvoiceList={TEST_DATA}/>;
 }
 
 export default App;

@@ -69,14 +69,39 @@ const InvoiceTableAddButton = () => {
     )
 }
 
-const InvoiceTable = () => {
+const InvoiceTableRow = ({ initialInvoiceData, initialIsEditing }) => {
+    const { description, rate, hours} = initialInvoiceData;
+
+    return (
+        <tr>
+            <EditableRowModeButtons isEditing={initialIsEditing}/>
+            <EditableDescriptionCell value={description} isEditing={initialIsEditing}/>
+            <EditableRateCell value={rate} isEditing={initialIsEditing}/>
+            <EditableHoursCell value={hours} isEditing={initialIsEditing}/>
+            <td>{formatCurrency(rate * hours)}</td>
+        </tr>
+    )
+}
+
+const InvoiceTable = ({ initialInvoiceList }) => {
+    const rows = initialInvoiceList.map(({ id, description, rate, hours }) => {
+        return(
+            <InvoiceTableRow
+                key={id}
+                initialInvoiceData={{ description,rate,hours }}
+                initialIsEditing={false}
+            />
+        )
+    })
+
     return (
         <table>
             <thead>
                 <InvoiceTableHeader/>
             </thead>
             <tbody>
-                <tr>
+                {rows}
+                {/* <tr>
                     <EditableRowModeButtons isEditing={false}/>
                     <EditableDescriptionCell value='Web Development' isEditing={false}/>
                     <EditableRateCell value={25} isEditing={false}/>
@@ -87,7 +112,7 @@ const InvoiceTable = () => {
                     <EditableDescriptionCell value='Copywriting' isEditing={true}/>
                     <EditableRateCell value={20} isEditing={true}/>
                     <EditableHoursCell value={8} isEditing={true}/>
-                </tr>
+                </tr> */}
             </tbody>
             <tfoot>
                 <InvoiceTableAddButton/>
