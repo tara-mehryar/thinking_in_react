@@ -1,6 +1,7 @@
 import './App.css';
 import InvoiceTable from './components/InvoiceTable';
 
+
 const TEST_DATA = [
   { id: 0, description: 'Content plan', rate: 50, hours: 4 },
   { id: 1, description: 'Copy writing', rate: 50, hours: 2 },
